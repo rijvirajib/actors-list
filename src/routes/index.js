@@ -9,9 +9,8 @@ import ActorsRoute from './Actors'
 export const createRoutes = (store) => ({
   path: '/',
   component: CoreLayout,
-  indexRoute: Home,
+  indexRoute: ActorsRoute(store),
   childRoutes: [
-    ActorsRoute(store)
   ]
 })
 
