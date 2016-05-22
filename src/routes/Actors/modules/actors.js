@@ -1,11 +1,8 @@
-import _ from 'lodash'
-
 // ------------------------------------
 // Constants
 // ------------------------------------
 export const REQUEST_ACTORS = 'REQUEST_ACTORS'
 export const RECEIVED_ACTORS = 'RECEIVED_ACTORS'
-export const INCREMENT_LIKES = 'INCREMENT_LIKES'
 
 // ------------------------------------
 // Actions
@@ -13,18 +10,6 @@ export const INCREMENT_LIKES = 'INCREMENT_LIKES'
 export const requestActors = (state) => {
   return {
     type: REQUEST_ACTORS
-  }
-}
-
-export const incrementLikes = (state, id) => {
-  let actors = state.actors;
-  let i = _.findIndex(actors, (o) => {
-    return o.id == id
-  })
-  actors[i].activity_likes += 1
-  return {
-    type: INCREMENT_LIKES,
-    actors
   }
 }
 
@@ -40,8 +25,8 @@ export const fetchActors = () => {
   return (dispatch, getState) => {
     let actors = getState().actors;
     if(actors.length > 0) {
-      dispatch(receiveActors(actors))
-      return
+      dispatch(receiveActors(actors));
+      return;
     }
     dispatch(requestActors);
     return fetch('https://nuvi-challenge.herokuapp.com/activities')
@@ -49,7 +34,7 @@ export const fetchActors = () => {
       .then(json => {
         dispatch(receiveActors(json))
       })
-      .catch(err => {
+      .catch( (err) => {
         console.log(err)
       }
     )
@@ -65,10 +50,7 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [RECEIVED_ACTORS] : (state, action) => {
-    return action
-  },
-  [INCREMENT_LIKES] : (state, action) => {
-    return action
+    return action.actors;
   }
 }
 

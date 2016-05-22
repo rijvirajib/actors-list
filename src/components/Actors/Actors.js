@@ -13,7 +13,7 @@ const Actors = React.createClass({
   },
 
   render: function() {
-    let actors = this.props.actors.actors;
+    let actors = this.props.actors;
     if(actors.length > 0) {
       actors.sort((a,b) => {
         const i = a.actor_name;

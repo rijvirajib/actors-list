@@ -34,7 +34,8 @@ export default class Actor extends React.Component {
   handleReduce = () => {
     this.setState({expanded: false})
   }
-  
+
+
   loadGoogleMap(){
     const actor = this.props.actor;
     const position = {
@@ -103,17 +104,17 @@ export default class Actor extends React.Component {
         </CardText>
         <CardActions style={cardPadding}>
           <Badge badgeContent = {actor.activity_likes} secondary={true} className="col-md-3">
-            <IconButton onClick={this.handleToggle}>
+            <IconButton tooltip="Likes" onClick={this.handleToggle}>
               <FontIcon className="fa fa-thumbs-o-up fa-fw" />
             </IconButton>
           </Badge>
-          <Badge badgeContent={actor.activity_shares} secondary={true} className="col-md-3" onClick={this.handleToggle}>
-            <IconButton>
+          <Badge badgeContent={actor.activity_shares} secondary={true} className="col-md-3">
+            <IconButton tooltip="Shares" onClick={this.handleToggle}>
               <FontIcon className="fa fa-share-alt fa-fw" />
             </IconButton>
           </Badge>
           <Badge badgeContent={actor.activity_comments} secondary={true} className="col-md-3">
-            <IconButton onClick={this.handleToggle}>
+            <IconButton tooltip="Notifications" onClick={this.handleToggle}>
               <FontIcon className="fa fa-bell-o fa-fw" />
             </IconButton>
           </Badge>
